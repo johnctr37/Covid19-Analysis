@@ -25,7 +25,9 @@ This project involves analyzing COVID-19 data from two primary tables: CovidDeat
 
 ### 6. *View Creation for Visualization*
    - *PercentPopulationVaccinated View:* Creates a view to store data on the percentage of the population vaccinated, useful for visualization purposes.
-
+     
+### 7. *Dashboard and Visualization*
+An HTML file has been added to showcase a Tableau dashboard that visualizes the results of the COVID-19 data analysis.
 ## Usage
 
 - The SQL scripts can be executed on a database containing CovidDeaths and CovidVaccinations tables under the PortfolioProject schema.
