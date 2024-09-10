@@ -63,51 +63,5 @@ from PortfolioProject..CovidDeaths
 where continent is not null
 order by 1,2
 
---Joining two tables
--- Looking at the total number of people that have been vaccinated
-select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations,
-SUM(CONVERT(bigint,vac.new_vaccinations)) OVER (Partition by dea.location order by dea.location, dea.date) as RollingpplVaccinated
-from PortfolioProject..CovidDeaths dea
-join PortfolioProject..CovidVaccinations vac
-On dea.location=vac.location
-and dea.date=vac.date
-where dea.continent is not null
+
 order by 1,2,3
-
-WITH PopvsVac AS (
-    SELECT dea.continent, 
-           dea.location, 
-           dea.date, 
-           dea.population, 
-           vac.new_vaccinations,
-           SUM(CONVERT(bigint, vac.new_vaccinations)) 
-           OVER (PARTITION BY dea.location ORDER BY dea.date ASC) AS RollingpplVaccinated
-    FROM PortfolioProject..CovidDeaths dea
-    JOIN PortfolioProject..CovidVaccinations vac
-    ON dea.location = vac.location
-    AND dea.date = vac.date
-    WHERE dea.continent IS NOT NULL
-)
-
-SELECT *,
-       (RollingpplVaccinated / Population) * 100 AS Percentpplvaccinated
-FROM PopvsVac
-WHERE RollingpplVaccinated <= Population;
-
---Creating View to store data for Visualization
-
-Create View PercentPopulationVaccinated as
-SELECT dea.continent, 
-           dea.location, 
-           dea.date, 
-           dea.population, 
-           vac.new_vaccinations,
-           SUM(CONVERT(bigint, vac.new_vaccinations)) 
-           OVER (PARTITION BY dea.location ORDER BY dea.date ASC) AS RollingpplVaccinated
-    FROM PortfolioProject..CovidDeaths dea
-    JOIN PortfolioProject..CovidVaccinations vac
-    ON dea.location = vac.location
-    AND dea.date = vac.date
-    WHERE dea.continent IS NOT NULL
-	
-select * from PercentPopulationVaccinated
