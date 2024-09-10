@@ -18,15 +18,8 @@ This project involves analyzing COVID-19 data from two primary tables: CovidDeat
 
 ### 4. *Global Daily and Total Statistics*
    - Analyzes the global daily and total cases, deaths, and death percentages.
-
-### 5. *Vaccination Analysis*
-   - *Vaccination Progress:* Joins CovidDeaths and CovidVaccinations tables to calculate the rolling number of vaccinated individuals by location and date.
-   - *Population vs. Vaccination:* Computes the percentage of the population vaccinated.
-
-### 6. *View Creation for Visualization*
-   - *PercentPopulationVaccinated View:* Creates a view to store data on the percentage of the population vaccinated, useful for visualization purposes.
      
-### 7. *Dashboard and Visualization*
+### 5. *Dashboard and Visualization*
 An HTML file has been added to showcase a Tableau dashboard that visualizes the results of the COVID-19 data analysis.
 ## Usage
 
